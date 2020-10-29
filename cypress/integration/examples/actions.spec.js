@@ -70,7 +70,7 @@ context('Actions', () => {
 
     // You can click on 9 specific positions of an element:
     //  -----------------------------------
-    // | topLeft        top       topRight |
+    // | topLeft,        top       topRight |
     // |                                   |
     // |                                   |
     // |                                   |
