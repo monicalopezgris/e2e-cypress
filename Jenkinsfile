@@ -5,19 +5,19 @@ pipeline {
         stage('Install Dependencies') { 
             steps {
                 echo 'INSTALLING DEP'
-                bat 'yarn install'
-                bat './node_modules/.bin/cypress run'
+                sh 'yarn install'
+                sh './node_modules/.bin/cypress run'
                 // bat 'yarn run cy:verify'
             }
         }
         stage('Build') { 
             steps {
-              bat 'yarn run build'
+              sh 'yarn run build'
             }
         }
         stage('Test') { 
             steps {
-              bat 'npm run ci:cy-run'
+              sh 'npm run ci:cy-run'
             }
         }
     }
@@ -25,7 +25,7 @@ pipeline {
     // shutdown the server running in the background
     always {
       echo 'Stopping local server'
-      bat 'pkill -f http-server'
+      sh 'pkill -f http-server'
     }
   }
 }
