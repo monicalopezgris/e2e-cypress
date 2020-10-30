@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'INSTALLING DEP'
                 bat 'yarn install'
-                bat 'yarn run cy:verify'
+                bat './node_modules/.bin/cypress run'
+                // bat 'yarn run cy:verify'
             }
         }
         stage('Build') { 

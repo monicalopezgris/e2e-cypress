@@ -10,8 +10,8 @@
     "lint": "ng lint",
     "cy:start": "cypress start",
     "cy:run": "cypress run",
-    "ci:cy-run": "unset NODE_OPTIONS && start-server-and-test start 4200 cy:run",
-    "cy:verify": "unset NODE_OPTIONS && cypress verify"
+    "ci:cy-run": "start-server-and-test start 4200 cy:run",
+    "cy:verify": "cypress verify"
   },
   "private": true,
   "dependencies": {
