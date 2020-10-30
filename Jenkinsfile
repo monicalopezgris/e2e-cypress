@@ -5,10 +5,8 @@ pipeline {
         stage('Install Dependencies') { 
             steps {
                 echo 'INSTALLING DEP'
-                // cleanWs()
-                // deleteDir()
                 bat 'yarn install'
-                //sh 'npm run cy:verify'
+                bat 'yarn run cy:verify'
             }
         }
         stage('Build') { 
@@ -16,17 +14,17 @@ pipeline {
               bat 'yarn run build'
             }
         }
-        // stage('Test') { 
-        //     steps {
-        //         sh 'npm run ci:cy-run'
-        //     }
-        // }
+        stage('Test') { 
+            steps {
+              bat 'npm run ci:cy-run'
+            }
+        }
     }
   post {
     // shutdown the server running in the background
     always {
       echo 'Stopping local server'
-      sh 'pkill -f http-server'
+      bat 'pkill -f http-server'
     }
   }
 }
