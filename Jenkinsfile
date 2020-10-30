@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'INSTALLING DEP'
                 sh 'npm install'
-                sh 'npm run cy:verify'
+                //sh 'npm run cy:verify'
             }
         }
         stage('Build') { 
@@ -13,11 +13,11 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Test') { 
-            steps {
-                sh 'npm run ci:cy-run'
-            }
-        }
+        // stage('Test') { 
+        //     steps {
+        //         sh 'npm run ci:cy-run'
+        //     }
+        // }
     }
   post {
     // shutdown the server running in the background
