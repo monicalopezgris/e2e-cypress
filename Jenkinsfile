@@ -5,13 +5,16 @@ pipeline {
         stage('Install Dependencies') { 
             steps {
                 echo 'INSTALLING DEP'
+                cleanWs()
+                deleteDir()
                 bat 'npm install'
                 //sh 'npm run cy:verify'
             }
         }
         stage('Build') { 
             steps {
-                bat 'npm run build'
+              
+              bat 'npm run build'
             }
         }
         // stage('Test') { 
