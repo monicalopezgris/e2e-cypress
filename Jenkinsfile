@@ -5,13 +5,13 @@ pipeline {
         stage('Install Dependencies') { 
             steps {
                 echo 'INSTALLING DEP'
-                sh 'npm install'
+                bat 'npm install'
                 //sh 'npm run cy:verify'
             }
         }
         stage('Build') { 
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
         // stage('Test') { 
