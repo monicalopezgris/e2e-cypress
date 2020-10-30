@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Install Dependencies') { 
             steps {
+                sh 'npm install'
                 sh 'npm ci'
                 sh 'npm run cy:verify'
             }
