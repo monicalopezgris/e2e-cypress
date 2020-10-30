@@ -5,14 +5,14 @@ pipeline {
         stage('Install Dependencies') { 
             steps {
                 echo 'INSTALLING DEP'
-                sh 'yarn install'
+                sh 'npm install'
                 sh './node_modules/.bin/cypress run'
                 // bat 'yarn run cy:verify'
             }
         }
         stage('Build') { 
             steps {
-              sh 'yarn run build'
+              sh 'npm run build'
             }
         }
         stage('Test') { 
