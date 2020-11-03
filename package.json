@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4200",
-    "build": "ng build",
-    "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "cy:start": "cypress start",
+    "build": "ng build",
+    "build:prod": "ng build --prod",
+    "cy:start": "cypress open",
+    "cy:verify": "cypress verify",
     "cy:run": "cypress run",
-    "ci:cy-run": "start-server-and-test start 4200 cy:run",
-    "cy:verify": "cypress verify"
+    "ci:cy-run": "start-server-and-test start 4200 cy:run"
   },
   "private": true,
   "dependencies": {

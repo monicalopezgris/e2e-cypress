@@ -1,31 +1,22 @@
 pipeline {
-    agent any
-    tools { nodejs "NodeJS 12.16.2"}
-    stages {
-        stage('Install Dependencies') { 
-            steps {
-                echo 'INSTALLING DEP'
-                bat 'yarn install'
-                bat './node_modules/.bin/cypress run'
-                // bat 'yarn run cy:verify'
-            }
-        }
-        stage('Build') { 
-            steps {
-              bat 'yarn run build'
-            }
-        }
-        stage('Test') { 
-            steps {
-              bat 'npm run ci:cy-run'
-            }
-        }
+  agent any
+  tools { nodejs "NodeJS 12.16.2"}
+  stages {
+    stage('Install Dependencies') { 
+      steps {
+        echo 'INSTALLING DEP'
+        bat 'yarn install'
+      }
     }
-  post {
-    // shutdown the server running in the background
-    always {
-      echo 'Stopping local server'
-      bat 'pkill -f http-server'
+    stage('Build') { 
+      steps {
+        bat 'yarn run build'
+      }
+    }
+    stage('Test') { 
+      steps {
+        bat 'npm run ci:cy-run'
+      }
     }
   }
 }
