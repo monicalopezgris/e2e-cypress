@@ -1,22 +1,26 @@
 pipeline {
-  agent any
   tools { nodejs "NodeJS 12.16.2"}
-  stages {
-    stage('Install Dependencies') { 
-      steps {
-        echo 'INSTALLING DEP'
-        bat 'yarn install'
-      }
-    }
-    stage('Build') { 
-      steps {
-        bat 'yarn run build'
-      }
-    }
-    stage('Test') { 
-      steps {
-        bat 'npm run ci:cy-run'
-      }
+  agent {
+    // this image provides everything needed to run Cypress
+    docker {
+      image 'cypress/base:10'
     }
   }
+    stages {
+        stage('Install Dependencies') { 
+            steps {
+              sh 'npm install'
+            }
+        }
+        stage('Build') { 
+            steps {
+              sh 'npm run build'
+            }
+        }
+        stage('Test') { 
+            steps {
+              sh 'npm run ci:cy-run'
+            }
+        }
+    }
 }
